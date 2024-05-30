@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Management</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 600px;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .card {
+            background-color: #fafafa;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        h2 {
+            color: #007BFF;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 8px 16px; /* Butonları daha küçük yapmak için padding azaltıldı */
+            font-size: 0.875rem; /* Font boyutu küçültüldü */
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            align-self: center; /* Butonları ortalamak için eklendi */
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        a.button {
+            text-decoration: none;
+            padding: 8px 16px;
+            font-size: 0.875rem;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            align-self: center; /* Butonları ortalamak için eklendi */
+            text-align: center; /* Metin ortalanması için eklendi */
+        }
+
+        a.button:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Flight Management System</h1>
+    <div class="card" id="flight-form">
+        <h2>Edit Flight</h2>
+        <form action="/edit/<%= flight.id %>" method="post">
+            <label for="flightNumber">Flight Number:</label>
+            <input type="text" id="flightNumber" name="flightNumber" value="<%= flight.flightNumber %>" required>
+
+            <label for="from">From:</label>
+            <input type="text" id="from" name="from" value="<%= flight.from %>" required>
+
+            <label for="to">To:</label>
+            <input type="text" id="to" name="to" value="<%= flight.to %>" required>
+
+            <label for="departure">Departure:</label>
+            <input type="time" id="departure" name="departure" value="<%= flight.departure %>" required>
+
+            <label for="arrival">Arrival:</label>
+            <input type="time" id="arrival" name="arrival" value="<%= flight.arrival %>" required>
+
+            <button type="submit">Update Flight</button>
+        </form>
+    </div>
+    <a href="/" class="button">Back to Flight List</a>
+</div>
+</body>
+</html>

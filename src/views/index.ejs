@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Management</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 600px;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .card {
+            background-color: #fafafa;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        h2 {
+            color: #007BFF;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ccc;
+        }
+
+        li div {
+            display: flex;
+            gap: 10px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button, .button {
+            padding: 8px 16px;
+            font-size: 0.875rem;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        button:hover, .button:hover {
+            background-color: #0056b3;
+        }
+
+        form.inline {
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Flight Management System</h1>
+    <div class="card" id="flight-list">
+        <h2>Flight List</h2>
+        <ul>
+            <% flights.forEach((flight, index) => { %>
+                <li>
+                    <span><%= flight.flightNumber %> from <%= flight.departure %> to <%= flight.arrival %></span>
+                    <div>
+                        <a href="/edit/<%= flight.id %>" class="button">Edit</a>
+                        <form action="/delete/<%= flight.id %>" method="post" class="inline">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </div>
+                </li>
+            <% }); %>
+        </ul>
+    </div>
+    <a href="/add-flight" class="button">Add New Flight</a>
+</div>
+</body>
+</html>
